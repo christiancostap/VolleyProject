@@ -1,8 +1,8 @@
-import express from 'express';
+import { Router } from 'express';
 import { register } from '../controller/servesSettings.js';
 
-const app = express();
+const app = Router();
 
-app.get('/', register);
+app.get('/register', register);
 
 export { app as servesSettingsRouter };

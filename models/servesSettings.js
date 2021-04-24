@@ -9,17 +9,17 @@ const serveSettingsSchema = mongoose.Schema({
     type: String,
     required: true
   },
-  speedSettings: {
-    type: [Object],
-    required: true,
-  },
+  // qualitySettings: {
+  //   type: Object,
+  //   required: true,
+  // },
   lastModified: {
     type: Date,
     default: Date.now() //corrigir data
   }
 });
 
-mongoose.model('servesSettings', serveSettingsSchema);
+mongoose.model('servesSettings', serveSettingsSchema, 'servesSettings');
 
 const serveSettingsModel = mongoose.model('servesSettings');
 
