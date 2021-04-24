@@ -9,7 +9,7 @@ const register = async (req, res, next) => {
       qualitySettings
     };
     const testIfExists = await serveSettingsModel.find({ 'abbreviation': inputObject.abbreviation });
-    if (testIfExists) {
+    if (testIfExists.length !== 0) {
       res.status(409).send({
         message: 'Este tipo de documento já foi cadastrado anteriormente'
       });

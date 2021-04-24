@@ -9,10 +9,10 @@ const serveSettingsSchema = mongoose.Schema({
     type: String,
     required: true
   },
-  // qualitySettings: {
-  //   type: Object,
-  //   required: true,
-  // },
+  qualitySettings: {
+    type: [Object],
+    required: true,
+  },
   lastModified: {
     type: Date,
     default: Date.now() //corrigir data
