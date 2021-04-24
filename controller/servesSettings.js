@@ -9,7 +9,7 @@ const register = async (req, res, next) => {
       qualitySettings
     };
     const testIfExists = await serveSettingsModel.find({ 'abbreviation': inputObject.abbreviation });
-    if (testIfExists.length !== 0) {
+    if (testIfExists.length) {
       res.status(409).send({
         message: 'Este tipo de documento já foi cadastrado anteriormente'
       });
@@ -26,4 +26,22 @@ const register = async (req, res, next) => {
   }
 }
 
-export { register };
+const getRecords = async (req, res, next) => {
+  try {
+    const records = await serveSettingsModel.find().select("classification abbreviation qualitySettings");
+    if (!records.length) {
+      res.status(404).send({
+        message: 'Nenhum documento encontrado. Favor cadastrar.'
+      });
+      return;
+    }
+    res.send(records);
+  } catch (error) {
+    res.status(500).send({
+      message: 'Erro interno. Favor contactar o desenvolvedor.',
+      description: error
+    });
+  }
+}
+
+export { register, getRecords };
