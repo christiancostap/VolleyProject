@@ -6,7 +6,7 @@ const register = async (req, res, next) => {
     const inputObject = {
       classification,
       abbreviation: abbreviation.toUpperCase(),
-      qualitySettings,
+      qualitySettings
     };
     const testIfExists = await serveSettingsModel.find({ 'abbreviation': inputObject.abbreviation });
     if (testIfExists) {
@@ -25,6 +25,5 @@ const register = async (req, res, next) => {
     });
   }
 }
-
 
 export { register };
